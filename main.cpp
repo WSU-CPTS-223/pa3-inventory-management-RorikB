@@ -1,6 +1,10 @@
 #include <iostream>
 #include <string>
 
+#include "Btree.h"
+#include "avl_map.h"
+#include "Data.cpp"
+
 using namespace std;
 
 void printHelp()
@@ -53,7 +57,7 @@ void bootStrap()
 
 // Read from CSV and initializing the data structures
 void initializeInventoryData() {
-    
+    // BTree
 }
 
 // listInventory <category_string> - Lists just the id and name of all inventory belonging to the specified category. 
