@@ -48,7 +48,34 @@ void bootStrap()
     // example: reading from CSV and initializing the data structures
     // Don't dump all code into this single function
     // use proper programming practices
+    
 }
+
+// Read from CSV and initializing the data structures
+void initializeInventoryData() {
+    
+}
+
+// listInventory <category_string> - Lists just the id and name of all inventory belonging to the specified category. 
+// If the category doesn't exists, prints 'Invalid Category'.
+void listInventoryByCategory(string category) {
+    if (category.empty()) {
+        cout << "Invalid category provided." << endl;
+        return;
+    }
+}
+
+// find <inventoryid> - Finds if a product exists whose ‘Uniq id’ matches the ‘inventoryid’. If
+// it exists, print the details of the product. If not, print 'Inventory/Product not found’.
+void findInventoryById(string inventoryId) {
+    if (inventoryId.empty()) {
+        cout << "Invalid inventory ID provided." << endl;
+        return;
+    }
+
+    
+}
+    
 
 int main(int argc, char const *argv[])
 {
