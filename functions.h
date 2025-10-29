@@ -18,7 +18,7 @@ void evalCommand(string line, avl_map<string, Data>& inventoryMap);
 void bootStrap(avl_map<string, Data>& inventoryMap);
 
 void parseCSVfile(avl_map<string, Data>& inventoryMap);
-void listInventoryByCategory(string category);
+void listInventoryByCategory(string category, avl_map<string, Data>& inventoryMap);
 void findInventoryById(string inventoryID, avl_map<string, Data>& inventoryMap);
 
 #endif

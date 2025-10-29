@@ -21,6 +21,12 @@ public:
     string getCategory() const {
         return category;
     }
+
+    // Overload the output stream operator for easy printing
+    friend ostream& operator<<(ostream& os, const Data& data) {
+        os << "Product Name: " << data.productName << ", Category: " << data.category;
+        return os;
+    }
 };
 
 #endif 

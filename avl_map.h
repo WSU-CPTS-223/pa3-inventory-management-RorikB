@@ -21,21 +21,6 @@ private:
         Node(K newKey, V newValue) : key(newKey), value(newValue), left(nullptr), right(nullptr), height(0) {}
     };
 
-    class Iterator {
-    private:
-        Node* current; // Current node in the iteration
-    public:
-        Iterator(Node* node) : current(node) {} // Constructor
-        Iterator& operator++() { // Pre-increment operator, in-order traversal
-            if (current->right) {
-                current = current->right;
-                while (current->left) current = current->left;
-            } 
-
-            return *this;
-        }
-    };
-
     Node* root;
     
     int getHeight(Node* node) {
@@ -156,6 +141,14 @@ private:
         return;
     }
 
+    void preOrderTraversal(Node* node) {
+        if (node) {
+            cout << node->key << " : " << node->value << endl;
+            preOrderTraversal(node->left);
+            preOrderTraversal(node->right);
+        }
+    }
+
 public:
     avl_map() : root(nullptr) {}
 
@@ -177,15 +170,19 @@ public:
         }
     }
 
-    // // Return an iterator from find just like std::map
-    // Iterator find(const K& key) {
-    //     Node* result = search(root, key);
-    //     if (result) {
-    //         return Iterator(result);
-    //     } else {
-    //         return nullptr; // Return null iterator if not found
-    //     }
-    // }
+    void preOrderTraversal(string category) {
+        // preOrderTraversal(root);
+        if (root == nullptr) {
+            return;
+        }
+        // Implement traversal logic to find and print nodes matching the category
+        if (root->value.getCategory() == category) {
+            cout << "ID: " << root->key << ", Name: " << root->value.getProductName() << endl;
+        }
+        preOrderTraversal(root->left);
+        preOrderTraversal(root->right);
+    }
+
 };
 
 #endif 

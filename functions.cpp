@@ -33,7 +33,8 @@ void evalCommand(string line, avl_map<string, Data>& inventoryMap)
     else if (line.rfind("listInventory") == 0)
     {
         // Look up the appropriate datastructure to find all inventory belonging to a specific category
-        cout << "YET TO IMPLEMENT!" << endl;
+        string inventoryCategory = line.substr(14); // Skip "listInventory "
+        listInventoryByCategory(inventoryCategory, inventoryMap);
     }
 }
 
@@ -75,7 +76,7 @@ void parseCSVfile(avl_map<string, Data>& inventoryMap) {
             if (c == '\r' || c == '\n') continue; // Skip new line characters
             else if (c == '\"') { 
                 inQuotes = !inQuotes; // Toggle inQuotes state
-                current += c; // Keep the quote character
+                // current += c; // Keep the quote character
             } else if (c == ',' && !inQuotes) {
                 parsedValues.push_back(current);
                 current.clear();
@@ -101,8 +102,19 @@ void parseCSVfile(avl_map<string, Data>& inventoryMap) {
 
 // listInventory <category_string> - Lists just the id and name of all inventory belonging to the specified category. 
 // If the category doesn't exists, prints 'Invalid Category'.
-void listInventoryByCategory(string category) {
+void listInventoryByCategory(string category, avl_map<string, Data>& inventoryMap) {
+    if (category.empty()) {
+        cout << "Invalid Category." << endl;
+        return;
+    }
     
+    // bool found = false;
+    // Traverse the AVL tree and print items matching the category
+    inventoryMap.preOrderTraversal(category);
+
+    // if(!found) {
+    //     cout << "Category not found." << endl;
+    // }
 }
 
 // find <inventoryid> - Finds if a product exists whose ‘Uniq id’ matches the ‘inventoryid’. If
@@ -113,7 +125,6 @@ void findInventoryById(string inventoryId, avl_map<string, Data>& inventoryMap) 
     if (it != nullptr) {
         // Inventory found, print details
         cout << "Inventory found: " << endl;
-        // Assuming Data class has appropriate getters
         cout << "Product Name: " << it->getProductName() << ", Category: " << it->getCategory() << endl;
     } else {
         // Inventory not found
