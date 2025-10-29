@@ -1,3 +1,6 @@
+#ifndef DATA_H
+#define DATA_H
+
 #include <string>
 
 using namespace std;
@@ -9,5 +12,8 @@ private:
 
 public:
     Data() = default;
+    Data(const string& prodName, const string& cat) : productName(prodName), category(cat) {}
     ~Data() = default;
 };
+
+#endif 
