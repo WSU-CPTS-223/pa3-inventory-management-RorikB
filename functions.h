@@ -15,7 +15,7 @@ using namespace std;
 void printHelp();
 bool validCommand(string line);
 void evalCommand(string line);
-void bootStrap();
+void bootStrap(avl_map<string, Data>& inventoryMap);
 
 void parseCSVfile(avl_map<string, Data>& inventoryMap);
 void listInventoryByCategory(string category);

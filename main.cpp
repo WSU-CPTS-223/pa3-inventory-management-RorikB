@@ -15,7 +15,7 @@ int main(int argc, char const *argv[])
     avl_map<string, Data> inventoryMap;
 
     string line;
-    bootStrap();
+    bootStrap(inventoryMap);
     while (getline(cin, line) && line != ":quit")
     {
         if (validCommand(line))

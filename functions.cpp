@@ -36,7 +36,7 @@ void evalCommand(string line)
     }
 }
 
-void bootStrap()
+void bootStrap(avl_map<string, Data>& inventoryMap)
 {
     cout << "\n Welcome to Amazon Inventory Query System" << endl;
     cout << " enter :quit to exit. or :help to list supported commands." << endl;
@@ -46,8 +46,8 @@ void bootStrap()
     // Don't dump all code into this single function
     // use proper programming practices
     
-    avl_map<string, Data> inventoryMap;
-    // parseCSVfile(inventoryMap);
+    // avl_map<string, Data> inventoryMap;
+    parseCSVfile(inventoryMap);
 }
 
 // Parse the command line arguments and load data from CSV file into appropriate data structures
