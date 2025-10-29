@@ -167,15 +167,25 @@ public:
         erase(root, key);
     }
 
-    // Return an iterator from find just like std::map
-    Iterator find(const K& key) {
+    // find function to search for a key and return its value
+    V* find(const K& key) {
         Node* result = search(root, key);
         if (result) {
-            return Iterator(result);
+            return &(result->value);
         } else {
-            return nullptr; // Return null iterator if not found
+            return nullptr; // Return null if not found
         }
     }
+
+    // // Return an iterator from find just like std::map
+    // Iterator find(const K& key) {
+    //     Node* result = search(root, key);
+    //     if (result) {
+    //         return Iterator(result);
+    //     } else {
+    //         return nullptr; // Return null iterator if not found
+    //     }
+    // }
 };
 
 #endif 

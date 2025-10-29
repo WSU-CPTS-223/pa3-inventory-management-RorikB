@@ -14,11 +14,11 @@ using namespace std;
 
 void printHelp();
 bool validCommand(string line);
-void evalCommand(string line);
+void evalCommand(string line, avl_map<string, Data>& inventoryMap);
 void bootStrap(avl_map<string, Data>& inventoryMap);
 
 void parseCSVfile(avl_map<string, Data>& inventoryMap);
 void listInventoryByCategory(string category);
-void findInventoryById(string inventoryID);
+void findInventoryById(string inventoryID, avl_map<string, Data>& inventoryMap);
 
 #endif

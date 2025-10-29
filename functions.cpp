@@ -16,7 +16,7 @@ bool validCommand(string line)
            (line.rfind("listInventory") == 0);
 }
 
-void evalCommand(string line)
+void evalCommand(string line, avl_map<string, Data>& inventoryMap)
 {
     if (line == ":help")
     {
@@ -25,8 +25,9 @@ void evalCommand(string line)
     // if line starts with find
     else if (line.rfind("find", 0) == 0)
     {
-        // Look up the appropriate datastructure to find if the inventory exist
-        cout << "YET TO IMPLEMENT!" << endl;
+        // Extract the inventory ID from the command
+        string inventoryId = line.substr(5); // Skip "find " (4 chars + space)
+        findInventoryById(inventoryId, inventoryMap);
     }
     // if line starts with listInventory
     else if (line.rfind("listInventory") == 0)
@@ -112,11 +113,21 @@ void listInventoryByCategory(string category) {
 
 // find <inventoryid> - Finds if a product exists whose ‘Uniq id’ matches the ‘inventoryid’. If
 // it exists, print the details of the product. If not, print 'Inventory/Product not found’.
-void findInventoryById(string inventoryId) {
+void findInventoryById(string inventoryId, avl_map<string, Data>& inventoryMap) {
     if (inventoryId.empty()) {
         cout << "Invalid inventory ID provided." << endl;
         return;
     }
 
-    
+    // Attempt to find the inventory in the AVL map
+    auto it = inventoryMap.find(inventoryId);
+    if (it != nullptr) {
+        // Inventory found, print details
+        cout << "Inventory found: " << endl;
+        // Assuming Data class has appropriate getters
+        cout << "Product Name: " << it->getProductName() << ", Category: " << it->getCategory() << endl;
+    } else {
+        // Inventory not found
+        cout << "Inventory/Product not found." << endl;
+    }
 }

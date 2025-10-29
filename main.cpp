@@ -20,7 +20,7 @@ int main(int argc, char const *argv[])
     {
         if (validCommand(line))
         {
-            evalCommand(line);
+            evalCommand(line, inventoryMap);
         }
         else
         {

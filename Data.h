@@ -14,6 +14,13 @@ public:
     Data() = default;
     Data(const string& prodName, const string& cat) : productName(prodName), category(cat) {}
     ~Data() = default;
+
+    string getProductName() const {
+        return productName;
+    }
+    string getCategory() const {
+        return category;
+    }
 };
 
 #endif 
