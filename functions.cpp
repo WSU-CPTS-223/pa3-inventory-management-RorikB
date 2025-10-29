@@ -26,7 +26,7 @@ void evalCommand(string line, avl_map<string, Data>& inventoryMap)
     else if (line.rfind("find", 0) == 0)
     {
         // Extract the inventory ID from the command
-        string inventoryId = line.substr(5); // Skip "find " (4 chars + space)
+        string inventoryId = line.substr(5); // Skip "find " (4 char + space)
         findInventoryById(inventoryId, inventoryMap);
     }
     // if line starts with listInventory
@@ -47,7 +47,6 @@ void bootStrap(avl_map<string, Data>& inventoryMap)
     // Don't dump all code into this single function
     // use proper programming practices
     
-    // avl_map<string, Data> inventoryMap;
     parseCSVfile(inventoryMap);
 }
 
@@ -58,8 +57,6 @@ void parseCSVfile(avl_map<string, Data>& inventoryMap) {
         cerr << "Error opening file: marketing_sample_for_amazon_com-ecommerce__20200101_20200131__10k_data-1.csv" << endl;
         return;
     }
-
-    // avl_map<string, Data> inventoryMap; // AVL map to store inventory data
 
     string line;
     bool inQuotes = false; 
@@ -105,20 +102,12 @@ void parseCSVfile(avl_map<string, Data>& inventoryMap) {
 // listInventory <category_string> - Lists just the id and name of all inventory belonging to the specified category. 
 // If the category doesn't exists, prints 'Invalid Category'.
 void listInventoryByCategory(string category) {
-    if (category.empty()) {
-        cout << "Invalid category provided." << endl;
-        return;
-    }
+    
 }
 
 // find <inventoryid> - Finds if a product exists whose ‘Uniq id’ matches the ‘inventoryid’. If
 // it exists, print the details of the product. If not, print 'Inventory/Product not found’.
 void findInventoryById(string inventoryId, avl_map<string, Data>& inventoryMap) {
-    if (inventoryId.empty()) {
-        cout << "Invalid inventory ID provided." << endl;
-        return;
-    }
-
     // Attempt to find the inventory in the AVL map
     auto it = inventoryMap.find(inventoryId);
     if (it != nullptr) {
