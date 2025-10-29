@@ -91,7 +91,7 @@ void parseCSVfile(avl_map<string, Data>& inventoryMap) {
         // Now assign parsed values to respective variables
         productId = parsedValues[0];
         productName = parsedValues[1];
-        category = parsedValues[2];
+        category = parsedValues[4];
 
         // Create Data object
         Data data(productName, category);
